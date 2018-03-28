@@ -1,0 +1,419 @@
+%******************************************************************************%
+%                                                                              %
+%                  sample.en.tex for LaTeX                                     %
+%                  Created on : Tue Mar 10 13:27:28 2015                       %
+%                  Made by : David "Thor" GIRON <thor@42.fr>                   %
+%                                                                              %
+%******************************************************************************%
+
+\documentclass{42-en}
+
+
+%******************************************************************************%
+%                                                                              %
+%                                    Header                                    %
+%                                                                              %
+%******************************************************************************%
+\begin{document}
+
+
+
+                           \title{Linked Lists}
+                          \subtitle{The Archnemesis of Arrays}
+                       \member{Tim Ngo -}{tingo@student.42.us.org}
+                        \member{42 Staff -}{pedago@42.fr}
+
+\summary {
+  This is an introduction to \texttt{Linked Lists}.
+}
+
+\maketitle
+
+\tableofcontents
+
+
+%******************************************************************************%
+%                                                                              %
+%                                  Foreword                                    %
+%                                                                              %
+%******************************************************************************%
+\chapter{Foreword}
+
+    The forewords section of a \texttt{42} subject is usually not
+    related in any way to the actual topic of the subject. The idea is
+    to share some jokes (often questionable) or something that the
+    community might be interested in.\\
+
+
+    \textbf{TIM YOU WILL NEED TO FIGURE THIS OUT}
+
+
+    % Spacing in the source code does not influence spacing in the
+    % generated pdf. The blank lines aboves and below won't appear.
+    % Instead, use \newline (or its shortcut \\) and \newpage to
+    % create vertical spacing.
+
+
+
+
+
+    As a consequence, let's use the forewords section of this sample
+    \texttt{42} subject to introduce the contents of this document and
+    its goals. In particular, the formating of a trivial
+    \texttt{LaTeX} document and the normalized chaptering of our
+    subjects. If you read this from the pdf, don't forget to open the
+    source file (file \texttt{sample.en.tex}) next to this pdf, in
+    order to see behind the scenes, and to understand which command
+    generates which result. Otherwise, if you have started with the
+    sources, congrats, that's the spirit ! But open the pdf (file
+    \texttt{sample.en.pdf}) anyway.\\
+
+    What to do if the file \texttt{sample.en.pdf} is not available ?
+    Easy, just compile the source file \texttt{sample.en.tex} using
+    the shell command \texttt{make}. Please refer to the documentation
+    to set up \texttt{LaTeX} on your system if needed.\\
+
+    If you're not familliar with \texttt{LaTeX}'s syntax, here is a
+    fairly exhaustive list of everything you'll need to write your
+    subject.\\
+
+%******************************************************************************%
+%                                                                              %
+%                                 Introduction                                 %
+%                                                                              %
+%******************************************************************************%
+\chapter{Introduction}
+    Today's lecture gave us a general overview of linked lists and their
+    uses in general coding practice. Linked lists are the foundation for
+    more advanced data structures and are commonly used in place of arrays
+    for data storage due to their ability to store more information in
+    non-contiguous blocks of memory. This makes linked lists a very powerful
+    tool for parallel computation.
+    \\
+    \\
+    There are many applications to the different variations of linked lists.
+    Many games will store cycling character animations in a circular linked
+    list or a circular array. Many operating systems line up processes and 
+    jobs in a queue. The desire to simulate genetic mutation and give people
+    superpowers by removing and swapping base pairs in DNA strands can best
+    be organized by a doubly linked list.
+    \\
+    \\
+    Within the 42 curriculum, the entire graphics branch frequently utilizes
+    linked lists to store coordinates of points for an object in a map or
+    rendering. In many Unix projects, making a process and job queue for
+    operating systems is essential to not making a computer crash.
+
+
+
+%******************************************************************************%
+%                                                                              %
+%                                  Goals                                       %
+%                                                                              %
+%******************************************************************************%
+\chapter{Goals}
+    This exercise set contains 7 exercises which include adding and
+    removing items, detecting infinite cycles, and sorting a list. I
+    hope you read this Tim because I have no idea what I want them to
+    accomplish from doing these exercises.
+    
+    FIX THIS TIM FIX THIS TIM FIX THIS TIM FIX THIS TIM FIX THIS TIM FIX THIS TIM 
+
+
+
+
+%******************************************************************************%
+%                                                                              %
+%                             General instructions                             %
+%                                                                              %
+%******************************************************************************%
+\chapter{General instructions}
+    The following exercises are designed such that written functions are
+    to be turned in as standalone functions; they will not be included
+    in the class for LinkedLists but will still perform standardized
+    operations. All exercises should be written in Python and no external
+    function calls should be made except for the first question; only the
+    functions supplied in the classes provided to you should be needed.
+    \\
+    \\
+    Both a \texttt{Node} and \texttt{SinglyList} class have been given to
+    you for use. The \texttt{SinglyList} class has an in-class iterator defined to
+    traverse a list, but you are free to iterate through the list yourself :)
+    \\
+    \\
+    If a function requires the use of the Node or SinglyList class, do not 
+    include that code in your file submission. If you use a previous solution
+    please make sure to include that function in the file submission.
+
+\newpage
+    \section{Node Class}
+
+    	\begin{42pycode}
+class Node(object):
+	def __init__(self, content):
+		if content is None:
+			raise ValueError('Node must have content')
+		self.c = content
+		self.n = None
+	
+	@property
+	def content(self):
+		return self.c
+
+	@content.setter
+	def content(self, val):
+		self.c = val
+	
+	@property
+	def next(self):
+		return self.n
+	
+	@next.setter
+	def next(self, val):
+		self.n = val
+\end{42pycode}
+
+    \section{SinglyList Class}
+
+    	\begin{42pycode}
+class SinglyList(object):
+	def __init__(self):
+		self.h = None
+
+	def __iter__(self):
+		current = self.head
+		while current:
+			yield current
+			current = current.next
+
+	@property
+	def head(self):
+		return self.h
+
+	@head.setter
+	def head(self, val):
+		self.h = val
+
+	def isEmpty(self):
+		return self.head == None
+
+	def add_head(self, node):
+		if self.isEmpty():
+			self.head = node
+		else:
+			node.next = self.head
+			self.head = node
+	\end{42pycode}
+
+\startexercices
+
+\chapter{Exercise\exercicenumber: Print All Nodes in a List}
+
+\extitle{Print All Nodes in a List}
+\exnumber{\exercicenumber}
+\exfiles{print\_list.py}
+\exforbidden{Everything except print() :D}
+\exnotes{n/a}
+
+\makeheaderfiles
+    Understanding how to traverse a linked list is important to mastering
+    its concept. Given the head node of a singly linked list, print out all
+    the items in the list.
+    \\
+    \\
+    \textbf{Input Format}
+
+    Complete the function \texttt{print\_list(list\_head)} which takes the head of a list.
+    \\
+    \\
+    \textbf{Output Format}
+
+    Just print out the items in the list in order. If a list is empty do 
+    not print anything. No return is needed for the function.
+
+\nextexercice
+
+\chapter{Exercise\exercicenumber: Add an Item to the End of a List}
+
+\extitle{Add an Item to the End of a List}
+\exnumber{\exercicenumber}
+\exfiles{add\_tail.py}
+\exforbidden{Everything :D}
+\exnotes{There is a similar function in the SinglyList class to reference :)}
+
+\makeheaderfiles
+    You're given the pointer to the head node of a singly linked list and
+    the value of a node to add to the list. Create a new node with the given
+    value. Insert this node at the tail of the linked list and return the head
+    node after the insertion.
+    \\
+    \\
+    \textbf{Input Format}
+    
+    Complete the function \texttt{add\_tail(list\_head, val)} which takes the head of
+    a list and the value to add.
+    \\
+    \\
+    \textbf{Output Format}
+
+    Add the requested value into the back of the list as a node. No return is
+    needed for the function.
+
+\nextexercice
+
+\chapter{Exercise\exercicenumber: Remove an Item From a List}
+
+\extitle{Remove an Item From a List}
+\exnumber{\exercicenumber}
+\exfiles{remove.py}
+\exforbidden{Everything :D}
+\exnotes{If the list is empty, head will be null. The list will not contain duplicates.}
+
+\makeheaderfiles
+    You're given the pointer to the head node of a singly linked list and
+    the value of a node to delete from the list. Delete the node with the given
+    value if it exists.
+    \\
+    \\
+    \textbf{Input Format}
+    
+    Complete the function \texttt{remove(list\_head, val)} which takes the head of
+    a list and the value to delete. For simplicity, all node values will be numbers.
+    \\
+    \\
+    \textbf{Output Format}
+    
+    If the node exists, delete that node and link its previous and next references
+    together. If the node does not exist, do nothing. No return is needed for the
+    function.
+
+\nextexercice
+
+\chapter{Exercise\exercicenumber: Cycle Detection}
+
+\extitle{Cycle Detection}
+\exnumber{\exercicenumber}
+\exfiles{has\_cycle.py}
+\exforbidden{Everything :D}
+\exnotes{If the list is empty, head will be null.}
+
+\makeheaderfiles
+    In a turn-based multiplayer game, a linked list can be used to cyclically
+    repeat player order by having the last player's \texttt{next} reference the
+    first player. Check that a given linked list cycles or not.
+    \\
+    \\
+    \textbf{Input Format}
+    
+    Complete the function \texttt{has\_cycle(list\_head)} which takes the head of
+    a list and determines whether the list cycles through the list repeatedly
+    or not.
+    \\
+    \\
+    \textbf{Output Format}
+    
+    If there is a cycle, return True; otherwise, return False.
+
+\nextexercice
+
+\chapter{Exercise\exercicenumber: Merge Two Lists}
+
+\extitle{Merge Two Lists}
+\exnumber{\exercicenumber}
+\exfiles{merge.py}
+\exforbidden{Everything :D}
+\exnotes{All trains have at least one car, and no two cars have the same weight.}
+
+\makeheaderfiles
+    Two cargo trains arrive in the trainyard and their cargo needs to be
+    consolidated into a single train set before it can depart. Both trains
+    were organized with the heaviest car in the front of the train
+    descending to the lightest car in the back.
+    \\
+    \\
+    \textbf{Input Format}
+    
+    Complete the function \texttt{merge(train1, train2)} which takes the head
+    of two lists train1 and train2 and merges both train sets into a single
+    train set. Consider reusing a function you've already written.
+    \\
+    \\
+    \textbf{Output Format}
+    
+    Return the head of a new train list with all cars sorted by weight from
+    heaviest to lightest.
+
+\nextexercice
+
+\chapter{Exercise\exercicenumber: Sort a Linked List}
+
+\extitle{Sort a Linked List}
+\exnumber{\exercicenumber}
+\exfiles{sort\_asc.py}
+\exforbidden{Everything :D}
+\exnotes{There is no limitation on which sort to implement for this exercise. You will find some sorts are easier to work into a linked list than others...}
+
+\makeheaderfiles
+    Understanding how to organize information in a list is important. Implement
+    a sorting algorithm that organizes a linked list with numbers in
+    \textbf{ascending} order.
+    \\
+    \\
+    \textbf{Input Format}
+    
+    Complete the function \texttt{sort\_asc(unsorted\_list)} which takes the head
+    of an unsorted list.
+    \\
+    \\
+    \textbf{Output Format}
+    
+    Sort the list within the function and return nothing.
+
+\chapter{Bonus part}
+    Let's try to combine some of the concepts we've gone over and go back to
+    a problem we've looked at with a little more difficulty.
+FIX THIS TIM FIX THIS TIM FIX THIS TIM FIX THIS TIM FIX THIS TIM FIX THIS TIM 
+
+
+\nextexercice
+
+\chapter{Exercise\exercicenumber: Trainyard Revisited}
+
+\extitle{Trainyard Revisited}
+\exnumber{\exercicenumber}
+\exfiles{trainyard.py}
+\exforbidden{Everything :D}
+\exnotes{All trains have at least one cart, and two carts \textbf{may} have the same weight.}
+
+\makeheaderfiles
+    Two more cargo trains arrive in the trainyard and need to be merged before
+    departure. These two trains are no longer organized by weight from heaviest
+    to lightest prior to the merge. The two lightest cars must also stay behind
+    at the trainyard for inspection and leave with the next incoming train.
+    \\
+    \\
+    \textbf{Input Format}
+    
+    Complete the function \texttt{trainyard(train1, train2)} which takes the head
+    of two lists train1 and train2. Consider making more than one function to
+    turn in.
+    \\
+    \\
+    \textbf{Output Format}
+    
+    Return the head of a new train list with all train cars organized from heaviest
+    to lightest. Remember to remove the two lightest trains from the set and to
+    take into account cars with equal weights.
+
+
+%******************************************************************************%
+%                                                                              %
+%                           Turn-in and peer-evaluation                        %
+%                                                                              %
+%******************************************************************************%
+\chapter{Turn-in and peer-evaluation}
+
+    I'm not sure that they do peer evaluation so I'll leave this section in.
+FIX THIS TIM FIX THIS TIM FIX THIS TIM FIX THIS TIM FIX THIS TIM FIX THIS TIM 
+
+\end{document}
