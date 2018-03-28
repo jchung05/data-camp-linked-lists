@@ -1,38 +1,5 @@
-class SinglyList(object):
-  def __init__(self):
-    self.h = None
-  
-  def __iter__(self):
-    current = self.head
-    while current:
-      yield current
-      current = current.next
-    
-  @property
-  def head(self):
-    return self.h
-    
-  @head.setter
-  def head(self, val):
-    self.h = val
-
-  def isEmpty(self):
-    return self.head == None
-    
-  def add_head(self, node):
-    if self.isEmpty():
-      self.head = node
-    else:
-      node.next = self.head
-      self.head = node
-
-def add_tail(list_head, node):
-  if list_head.head is None:
-    list_head.head = node
-  else:
-    for item in list_head:
-      current = item
-    current.next = node
+from Node import Node
+from SinglyList import SinglyList
 
 def remove_last(single_list):
   for itr in single_list:
@@ -65,17 +32,54 @@ def trainyard(train1, train2):
       tmp = itr2
       itr2 = itr2.next
       tmp.next = None
-    add_tail(newtrain, tmp)
+    newtrain.add_tail(tmp)
   while itr1:
     tmp = itr1
     itr1 = itr1.next
     tmp.next = None
-    add_tail(newtrain, tmp)
+    newtrain.add_tail(tmp)
   while itr2:
     tmp = itr2
     itr2 = itr2.next
     tmp.next = None
-    add_tail(newtrain, tmp)
+    newtrain.add_tail(tmp)
   remove_last(newtrain)
   remove_last(newtrain)
   return newtrain
+
+newlist = SinglyList()
+a = Node(1)
+b = Node(2)
+c = Node(3)
+d = Node(4)
+e = Node(5)
+f = Node(1019)
+
+newlist.add_tail(a)
+newlist.add_tail(b)
+newlist.add_tail(c)
+newlist.add_tail(d)
+newlist.add_tail(e)
+newlist.add_tail(f)
+
+thirdlist = SinglyList()
+first = Node(76)
+second = Node(93)
+third = Node(11)
+fourth = Node(1019)
+fifth = Node(530)
+sixth = Node(777)
+seventh = Node(0)
+
+thirdlist.add_tail(first)
+thirdlist.add_tail(second)
+thirdlist.add_tail(third)
+thirdlist.add_tail(fourth)
+thirdlist.add_tail(fifth)
+thirdlist.add_tail(sixth)
+thirdlist.add_tail(seventh)
+
+xxlist = trainyard(newlist, thirdlist)
+
+for item in xxlist:
+    print(item.c)

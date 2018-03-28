@@ -1,4 +1,4 @@
-def sortAsc(single_list):
+def sort_asc(single_list):
   for itr in single_list:
     itr2 = itr.next
     while itr2:
