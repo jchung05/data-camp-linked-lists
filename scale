@@ -1,0 +1,32 @@
+Project Name: Linked Lists
+
+# These are all pass or fail.
+
+Intro:
+    - Check for the file name and folder structure, if it is not correct they will fail.
+    - Check that their function is named exactly as specified in the pdf. If not, they will fail.
+    - Check that there are no forbidden functions used.
+
+ex00:
+    - Check that their function is able to print out the values of all nodes in the list.
+
+ex01:
+    - Check that their function adds a single node to the end of a given list.
+    - It should be add a tail node, not change the tail node.
+
+ex02:
+    - Check that their function removes the specified node and keeps the list whole.
+
+ex03:
+    - Check that their function detects if there is a cycle.
+
+ex04:
+    - Check that their function merges the two lists.
+
+ex05:
+    - Check that their function sorts the list in ascending order.
+
+Bonus:
+    - Check that ALL other excercises are correct before continuing.
+    - Check that their function takes two lists, merges them, sorts, then drops the two smallest values.
+    - It should work even with values that are equal.
